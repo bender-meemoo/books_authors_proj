@@ -12,11 +12,12 @@
     <div class="top-section">
         <div>
             <h1>Add a Author</h1>
-            <form action="">
+            <form action="authors/add" method="POST">
+                {% csrf_token %}
                 <p>First Name<input type="text" name="fname" id=""></p>
                 <p>Last Name<input type="text" name="lname" id=""></p>
-                <label for="notes">Notes</label><br>
-                <textarea name="" id="" cols="30" rows="10"></textarea><br>
+                <label for="">Notes</label><br>
+                <textarea name="note" id="" cols="30" rows="10"></textarea><br>
                 <button type="submit">Add</button>
             </form>
         </div>
@@ -31,7 +32,7 @@
                 <tr>
                     <td>{{author.id}}</td>
                     <td>{{author.first_name}} {{author.last_name}}</td>
-                    <td> <a href="http://" target="_blank" rel="noopener noreferrer">View</a></td>
+                    <td> <a href="authors/{{author.id}}">View</a></td>
                 </tr>
                 {% endfor %}
             </table>
