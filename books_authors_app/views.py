@@ -30,7 +30,7 @@ def authors(request):
 def addauthor(request):
     print(request.POST)
     Author.objects.create(first_name = request.POST['fname'], last_name = request.POST['lname'], notes = request.POST['note'])
-    return redirect('/')
+    return redirect('/authors')
 
 def authorsadd(request, authorID):
     context = {
@@ -55,4 +55,4 @@ def authorstoadd(request, bookID):
     this_book = Book.objects.get(id = bookID)
     print('******************************', this_author, bookID)
     this_author.books.add(bookID)
-    return redirect('/')
+    return redirect(f'/book/{bookID}')
